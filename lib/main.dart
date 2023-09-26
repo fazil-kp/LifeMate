@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lifemate/User/user_login_page.dart';
 import 'package:lifemate/User/user_splash_screen.dart';
 
+import 'User/user_home_page.dart';
+import 'User/user_signup_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const UserLoginPage(),
+      home: const UserHomepage(),
     );
   }
 }
