@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 Image logoWidget(String imageName) {
   return Image.asset(
@@ -45,8 +44,8 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
-Container logInSignUpButton(
-    BuildContext context, bool isLogin, Function onTap) {
+Container firebaseButton(
+    BuildContext context, title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,
@@ -59,7 +58,7 @@ Container logInSignUpButton(
         onTap();
       },
       child: Text(
-        isLogin ? "LOG IN" : "SIGN UP",
+        title,
         style: TextStyle(
           color: Colors.black87,
           fontWeight: FontWeight.bold,
