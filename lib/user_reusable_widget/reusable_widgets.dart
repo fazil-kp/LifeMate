@@ -11,7 +11,7 @@ Image logoWidget(String imageName) {
 }
 
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
+    TextEditingController controller,) {
   return TextField(
     controller: controller,
     obscureText: isPasswordType,
@@ -44,8 +44,7 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
-Container firebaseButton(
-    BuildContext context, title, Function onTap) {
+Container firebaseButton(BuildContext context, title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,

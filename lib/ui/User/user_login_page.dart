@@ -9,7 +9,6 @@ import '../../user_reusable_widget/color_utils.dart';
 import '../../user_reusable_widget/reusable_widgets.dart';
 import '../Admin/admin_login_page.dart';
 
-
 class UserLoginPage extends StatefulWidget {
   const UserLoginPage({super.key});
 
@@ -48,13 +47,16 @@ class _UserLoginPageState extends State<UserLoginPage> {
             ),
             child: Column(
               children: <Widget>[
-
                 logoWidget("assets/images/Splash.png"),
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter email", Icons.email_outlined, false,
-                    _emailTextController,),
+                reusableTextField(
+                  "Enter email",
+                  Icons.email_outlined,
+                  false,
+                  _emailTextController,
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -70,17 +72,20 @@ class _UserLoginPageState extends State<UserLoginPage> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                        Fluttertoast.showToast(msg: "Login Successful ");
+                    Fluttertoast.showToast(msg: "Login Successful ");
                     print("Log In successfully");
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => UserHomepage()));
-                  }).catchError((e){
+                  }).catchError((e) {
                     Fluttertoast.showToast(msg: e!.message);
                   });
                 }),
-                signUpOption(),SizedBox(height: MediaQuery.of(context).size.height*0.023,),
+                signUpOption(),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.023,
+                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
                     100,

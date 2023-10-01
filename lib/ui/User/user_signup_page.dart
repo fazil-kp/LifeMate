@@ -6,7 +6,6 @@ import 'package:lifemate/ui/User/user_home_page.dart';
 import '../../user_reusable_widget/color_utils.dart';
 import '../../user_reusable_widget/reusable_widgets.dart';
 
-
 class UserSignUpPage extends StatefulWidget {
   const UserSignUpPage({super.key});
 

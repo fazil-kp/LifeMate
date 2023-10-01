@@ -7,8 +7,6 @@ import '../../user_reusable_widget/reusable_widgets.dart';
 import '../User/reset_password.dart';
 import '../User/user_login_page.dart';
 
-
-
 class AdminLoginPage extends StatefulWidget {
   const AdminLoginPage({super.key});
 
@@ -25,9 +23,12 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: BackButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>UserLoginPage()));
-        },),
+        leading: BackButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => UserLoginPage()));
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
@@ -59,13 +60,16 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
             ),
             child: Column(
               children: <Widget>[
-
                 logoWidget("assets/images/adminLogo.png"),
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter UserName", Icons.email_outlined, false,
-                  _userNameTextController,),
+                reusableTextField(
+                  "Enter UserName",
+                  Icons.email_outlined,
+                  false,
+                  _userNameTextController,
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -75,8 +79,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                   height: 5,
                 ),
                 forgetPassword(context),
-                firebaseButton(context, "SIGN IN", () {
-                }),
+                firebaseButton(context, "SIGN IN", () {}),
               ],
             ),
           ),

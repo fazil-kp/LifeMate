@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../user_reusable_widget/color_utils.dart';
 import '../../user_reusable_widget/reusable_widgets.dart';
 
-
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
 
@@ -57,8 +56,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 SizedBox(
                   height: 20,
                 ),
-                firebaseButton(context, "Reset Password", () {
-                }),
+                firebaseButton(context, "Reset Password", () {}),
               ],
             ),
           ),
