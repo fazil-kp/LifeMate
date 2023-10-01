@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lifemate/User/user_home_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-import '../user_reusable_widget/color_utils.dart';
-import '../user_reusable_widget/reusable_widgets.dart';
+import '../../user_reusable_widget/color_utils.dart';
+import '../../user_reusable_widget/reusable_widgets.dart';
+
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -51,18 +52,12 @@ class _ResetPasswordState extends State<ResetPassword> {
             ),
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 30,
-                ),
                 reusableTextField("Enter email", Icons.email_outlined, false,
                     _emailTextController),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 firebaseButton(context, "Reset Password", () {
-                  FirebaseAuth.instance
-                      .sendPasswordResetEmail(email: _emailTextController.text)
-                      .then((value) => Navigator.of(context).pop());
                 }),
               ],
             ),

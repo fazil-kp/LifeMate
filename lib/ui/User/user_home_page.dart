@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lifemate/User/user_login_page.dart';
+import 'package:lifemate/ui/User/user_login_page.dart';
+
 
 class UserHomepage extends StatelessWidget {
   const UserHomepage({super.key});

@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lifemate/User/user_home_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lifemate/ui/User/user_home_page.dart';
 
-import '../user_reusable_widget/color_utils.dart';
-import '../user_reusable_widget/reusable_widgets.dart';
+import '../../user_reusable_widget/color_utils.dart';
+import '../../user_reusable_widget/reusable_widgets.dart';
 
 
 class UserSignUpPage extends StatefulWidget {
@@ -78,14 +79,16 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
+                    Fluttertoast.showToast(msg: "Login Successful ");
                     print("Created new account");
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => UserHomepage()));
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
-                  });
+                  })
+                    ..catchError((e) {
+                      Fluttertoast.showToast(msg: e!.message);
+                    });
                 }),
               ],
             ),

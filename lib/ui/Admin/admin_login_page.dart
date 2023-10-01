@@ -1,26 +1,40 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lifemate/User/reset_password.dart';
-import 'package:lifemate/User/user_home_page.dart';
-import 'package:lifemate/User/user_signup_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-import '../user_reusable_widget/color_utils.dart';
-import '../user_reusable_widget/reusable_widgets.dart';
+import '../../user_reusable_widget/color_utils.dart';
+import '../../user_reusable_widget/reusable_widgets.dart';
+import '../User/reset_password.dart';
+import '../User/user_login_page.dart';
 
-class UserLoginPage extends StatefulWidget {
-  const UserLoginPage({super.key});
+
+
+class AdminLoginPage extends StatefulWidget {
+  const AdminLoginPage({super.key});
 
   @override
-  State<UserLoginPage> createState() => _UserLoginPageState();
+  State<AdminLoginPage> createState() => _AdminLoginPageState();
 }
 
-class _UserLoginPageState extends State<UserLoginPage> {
+class _AdminLoginPageState extends State<AdminLoginPage> {
   TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _userNameTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: BackButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>UserLoginPage()));
+        },),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          "Admin Panel",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -45,12 +59,13 @@ class _UserLoginPageState extends State<UserLoginPage> {
             ),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/Splash.png"),
+
+                logoWidget("assets/images/adminLogo.png"),
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter email", Icons.email_outlined, false,
-                    _emailTextController),
+                reusableTextField("Enter UserName", Icons.email_outlined, false,
+                  _userNameTextController,),
                 SizedBox(
                   height: 30,
                 ),
@@ -60,51 +75,13 @@ class _UserLoginPageState extends State<UserLoginPage> {
                   height: 5,
                 ),
                 forgetPassword(context),
-                firebaseButton(context, "LOG IN", () {
-                  FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                      .then((value) {
-                    print("Log In successfully");
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UserHomepage()));
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
-                  });
+                firebaseButton(context, "SIGN IN", () {
                 }),
-                signUpOption(),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Row signUpOption() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Don't have an account? ",
-          style: TextStyle(color: Colors.white70),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UserSignUpPage()),
-            );
-          },
-          child: Text(
-            "Sign Up",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
     );
   }
 
