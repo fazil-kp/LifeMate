@@ -41,6 +41,12 @@ dependencies:
   firebase_auth: ^4.10.0
   cloud_firestore: ^4.9.2
   fluttertoast: ^8.2.2
+  firebase_storage: ^11.2.7
+  shared_preferences: ^2.2.1
+  image_picker: ^1.0.4
+  image_cropper: ^5.0.0
+  path_provider: ^2.1.1
+  flutter_image_compress: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -84,17 +90,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: Exo Bold
+      fonts:
+        - asset: fonts/Exo2-Bold.ttf
+    - family: Exo Regular
+      fonts:
+        - asset: fonts/Exo2-Regular.ttf
+    - family: Exo Medium
+      fonts:
+        - asset: fonts/Exo2-Medium.ttf
+    - family: Exo Light
+      fonts:
+        - asset: fonts/Exo2-Light.ttf
+    - family: Exo Thin
+      fonts:
+        - asset: fonts/Exo2-Thin.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

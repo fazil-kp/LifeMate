@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lifemate/ui/User/user_login_page.dart';
 
 import '../../user_reusable_widget/color_utils.dart';
 import '../../user_reusable_widget/reusable_widgets.dart';
@@ -52,11 +53,24 @@ class _ResetPasswordState extends State<ResetPassword> {
             child: Column(
               children: <Widget>[
                 reusableTextField("Enter email", Icons.email_outlined, false,
-                    _emailTextController),
+                    _emailTextController,
+                ),
                 SizedBox(
                   height: 20,
                 ),
-                firebaseButton(context, "Reset Password", () {}),
+                firebaseButton(context, "Reset Password", () {
+                  FirebaseAuth.instance
+                      .sendPasswordResetEmail(email: _emailTextController.text)
+                      .then((value) {
+                        Fluttertoast.showToast(msg: "Check email");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserLoginPage()));
+                  }).catchError((e) {
+                    Fluttertoast.showToast(msg: e!.message);
+                  });
+                }),
               ],
             ),
           ),

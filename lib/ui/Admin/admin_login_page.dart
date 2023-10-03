@@ -1,11 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lifemate/ui/Admin/admin_home_page.dart';
+import 'package:lifemate/ui/User/user_home_page.dart';
 
+import '../../firebase/admin_model_database.dart';
 import '../../user_reusable_widget/color_utils.dart';
 import '../../user_reusable_widget/reusable_widgets.dart';
-import '../User/reset_password.dart';
+import '../User/user_reset_password.dart';
 import '../User/user_login_page.dart';
+import '../User/user_signup_page.dart';
 
 class AdminLoginPage extends StatefulWidget {
   const AdminLoginPage({super.key});
@@ -17,6 +22,9 @@ class AdminLoginPage extends StatefulWidget {
 class _AdminLoginPageState extends State<AdminLoginPage> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +33,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
       appBar: AppBar(
         leading: BackButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => UserLoginPage()));
+            Navigator.pop(context);
           },
         ),
         backgroundColor: Colors.transparent,
@@ -65,7 +72,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                   height: 30,
                 ),
                 reusableTextField(
-                  "Enter UserName",
+                  "Enter Panel Code",
                   Icons.email_outlined,
                   false,
                   _userNameTextController,
@@ -76,10 +83,14 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 reusableTextField("Enter Password", Icons.lock_outline, true,
                     _passwordTextController),
                 SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
-                forgetPassword(context),
-                firebaseButton(context, "SIGN IN", () {}),
+                // forgetPassword(context),
+                firebaseButton(context, "SIGN IN", () {
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> AdminHomePage()));
+                }),
+                // signUpOption(),
               ],
             ),
           ),
@@ -88,22 +99,46 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
     );
   }
 
-  Widget forgetPassword(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 35,
-      alignment: Alignment.bottomRight,
-      child: TextButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ResetPassword()));
-        },
-        child: Text(
-          "Forget Password ?",
-          style: TextStyle(color: Colors.white70),
-          textAlign: TextAlign.right,
-        ),
-      ),
-    );
-  }
+  // Widget forgetPassword(BuildContext context) {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width,
+  //     height: 35,
+  //     alignment: Alignment.bottomRight,
+  //     child: TextButton(
+  //       onPressed: () {
+  //         Navigator.push(context,
+  //             MaterialPageRoute(builder: (context) => ResetPassword()));
+  //       },
+  //       child: Text(
+  //         "Forget Password ?",
+  //         style: TextStyle(color: Colors.white70),
+  //         textAlign: TextAlign.right,
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  // Row signUpOption() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       Text(
+  //         "Create User ",
+  //         style: TextStyle(color: Colors.white70),
+  //       ),
+  //       GestureDetector(
+  //         onTap: () {
+  //           Navigator.push(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => UserSignUpPage()),
+  //           );
+  //         },
+  //         child: Text(
+  //           "Account !",
+  //           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 }

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lifemate/ui/User/reset_password.dart';
+import 'package:lifemate/ui/User/user_reset_password.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/ui/User/user_signup_page.dart';
 
@@ -19,6 +19,8 @@ class UserLoginPage extends StatefulWidget {
 class _UserLoginPageState extends State<UserLoginPage> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,62 +47,68 @@ class _UserLoginPageState extends State<UserLoginPage> {
               20,
               0,
             ),
-            child: Column(
-              children: <Widget>[
-                logoWidget("assets/images/Splash.png"),
-                SizedBox(
-                  height: 30,
-                ),
-                reusableTextField(
-                  "Enter email",
-                  Icons.email_outlined,
-                  false,
-                  _emailTextController,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                reusableTextField("Enter Password", Icons.lock_outline, true,
-                    _passwordTextController),
-                SizedBox(
-                  height: 5,
-                ),
-                forgetPassword(context),
-                firebaseButton(context, "LOG IN", () {
-                  FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                      .then((value) {
-                    Fluttertoast.showToast(msg: "Login Successful ");
-                    print("Log In successfully");
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UserHomepage()));
-                  }).catchError((e) {
-                    Fluttertoast.showToast(msg: e!.message);
-                  });
-                }),
-                signUpOption(),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.023,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    100,
-                    0,
-                    100,
-                    0,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  logoWidget("assets/images/Splash.png"),
+                  SizedBox(
+                    height: 8,
                   ),
-                  child: firebaseButton(context, "Admin", () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminLoginPage()));
+                  reusableTextField(
+                    "Enter email",
+                    Icons.email_outlined,
+                    false,
+                    _emailTextController,
+
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  reusableTextField("Enter Password", Icons.lock_outline, true,
+                      _passwordTextController,
+
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  forgetPassword(context),
+                  firebaseButton(context, "LOG IN", () {
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Fluttertoast.showToast(msg: "Login Successful ");
+                      print("Log In successfully");
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserHomepage()));
+                    }).catchError((e) {
+                      Fluttertoast.showToast(msg: e!.message);
+                    });
                   }),
-                ),
-              ],
+                  signUpOption(),
+                  // SizedBox(
+                  //   height: MediaQuery.of(context).size.height * 0.01,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.fromLTRB(
+                  //     100,
+                  //     0,
+                  //     100,
+                  //     0,
+                  //   ),
+                  //   child: firebaseButton(context, "Admin", () {
+                  //     Navigator.pushReplacement(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => AdminLoginPage()));
+                  //   }),
+                  // ),
+                ],
+              ),
             ),
           ),
         ),
