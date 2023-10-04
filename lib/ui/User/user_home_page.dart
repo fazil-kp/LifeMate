@@ -63,6 +63,8 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lifemate/ui/Admin/admin_login_page.dart';
 import 'package:lifemate/ui/User/user_contact_us_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_myaccount_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_profile_page.dart';
 import 'package:lifemate/user_reusable_widget/utils_for_image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -79,12 +81,15 @@ class UserHomepage extends StatefulWidget {
 }
 
 class _UserHomepageState extends State<UserHomepage> {
+
+
+
   // Uint8List? _image;
   bool _isLoading = true;
   final auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser =
-      UserModel(uid: '', userName: '', email: '', password: '');
+  // UserModel loggedInUser =
+  //     UserModel(uid: '', userName: '', email: '', password: '');
 
   String imageUrl = '';
   final storage = FirebaseStorage.instance;
@@ -96,14 +101,6 @@ class _UserHomepageState extends State<UserHomepage> {
     // getFacultyDetails();
     //getStudyMaterials();
     _loadData();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      this.loggedInUser = UserModel.fromMap(value.data() ?? {});
-      setState(() {});
-    });
   }
 
   Future<void> _loadData() async {
@@ -330,7 +327,7 @@ class _UserHomepageState extends State<UserHomepage> {
                                     height: size.height / 20,
                                   ),
                                   Text(
-                                    "${loggedInUser.userName}",
+                                    " kmkmkm",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: Bold,
@@ -350,12 +347,12 @@ class _UserHomepageState extends State<UserHomepage> {
                                   SizedBox(
                                     height: size.height / 200,
                                   ),
-                                  // Text(
-                                  //   "",
-                                  //   style: const TextStyle(
-                                  //     fontWeight: FontWeight.bold,
-                                  //   ),
-                                  // ),
+                                  Text(
+                                    "",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -372,18 +369,18 @@ class _UserHomepageState extends State<UserHomepage> {
                             // child: const CircularProgressIndicator(),
                           ),
                         ),
-                        Positioned(
-                          left: size.width*0.5,
-                          top: size.width*.428,
-                          child: IconButton(
-                            color: Colors.red,
-                            onPressed: () {},
-                            icon: Icon(Icons.add_a_photo),
-                          ),
-                          bottom: 140,
-                          // left: 80,
-                          right: 135,
-                        ),
+                        // Positioned(
+                        //   left: size.width*0.5,
+                        //   top: size.width*.428,
+                        //   child: IconButton(
+                        //     color: Colors.red,
+                        //     onPressed: () {},
+                        //     icon: Icon(Icons.add_a_photo),
+                        //   ),
+                        //   bottom: 140,
+                        //   // left: 80,
+                        //   right: 135,
+                        // ),
                         //Menu Text
                         Positioned(
                           top: size.height / 2.75,
@@ -408,8 +405,8 @@ class _UserHomepageState extends State<UserHomepage> {
                           Wrap(
                             alignment: WrapAlignment.center,
                             children: [
-                              const ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                               ButtonInMenu(
+                                  navigationInButton: UserProfilePage(userData: {},),
                                   iconInButton: Icons.man_rounded,
                                   textInButton: "Profile"),
                               ButtonInMenu(
@@ -428,9 +425,9 @@ class _UserHomepageState extends State<UserHomepage> {
                           //Second Row
                           Wrap(
                             alignment: WrapAlignment.center,
-                            children: const [
+                            children:  [
                               ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                                  navigationInButton: UserMyAccountPage(),
                                   iconInButton: Icons.account_box_rounded,
                                   textInButton: "My Account"),
                               ButtonInMenu(
