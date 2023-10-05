@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../user_reusable_widget/constant_fonts.dart';
+import '../../user_reusable_widget/constant_fonts.dart';
 
-
-
-class UserRequestPage extends StatelessWidget {
+class AdminHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Request accepting',
+          'History',
           style: TextStyle(fontFamily: Bold,fontWeight: FontWeight.bold, color: Colors.black),
         ),
         centerTitle: true,
@@ -101,4 +99,10 @@ class AdminDonarList extends StatelessWidget {
       },
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: AdminHistoryPage(),
+  ));
 }

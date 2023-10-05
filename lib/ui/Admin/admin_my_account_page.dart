@@ -3,15 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 
-class UserMyAccountPage extends StatefulWidget {
+class AdminMyAccountPage extends StatefulWidget {
   @override
-  State<UserMyAccountPage> createState() => _UserMyAccountPageState();
+  State<AdminMyAccountPage> createState() => _AdminMyAccountPageState();
 }
 
-class _UserMyAccountPageState extends State<UserMyAccountPage> {
+class _AdminMyAccountPageState extends State<AdminMyAccountPage> {
   Future<DocumentSnapshot<Map<String, dynamic>>> _getUserData() async {
     final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
-        .collection('userProfile')
+        .collection('adminProfile')
         .orderBy('lastUpdatedTime', descending: true)
         .limit(1)
         .get();

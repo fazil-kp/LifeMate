@@ -1,10 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/demo_page.dart';
+import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 
 import '../../user_reusable_widget/admin_alert_window.dart';
 import '../../user_reusable_widget/user_alert_window.dart';
+import 'admin_help_page.dart';
+import 'admin_history_page.dart';
+import 'admin_manage_request_page.dart';
+import 'admin_manage_user_page.dart';
+import 'admin_my_account_page.dart';
+import 'admin_profile_page.dart';
 
 
 class AdminHomePage extends StatelessWidget {
@@ -66,15 +74,12 @@ class AdminHomePage extends StatelessWidget {
                   'Home',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontFamily: Bold,
                       fontSize: size.height / 48),
                 ),
               ),
               ListTile(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                        const AdminAlertWindow(i: 0, alertHead: 'My Account', alertText: 'Contact at ` abcda@gmail.com ` for account related queries.\n if you phase any issue with your account, contact at +9874563210.\n\n You will have full control over your account in the future. \n\n\nThank you for using LifeMate'))),
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminMyAccountPage())),
                 leading: Icon(
                   Icons.account_box_rounded,
                   color: Colors.black,
@@ -84,6 +89,7 @@ class AdminHomePage extends StatelessWidget {
                   'My Account',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontFamily: Bold,
                       fontSize: size.height / 48),
                 ),
               ),
@@ -92,23 +98,39 @@ class AdminHomePage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                        const AdminAlertWindow(i: 0, alertHead: "Contact Us", alertText: "Share your feedback at abcde@gmail.com"))),
+                        AdminContactUsPage())),
                 leading: Icon(
-                  Icons.call,
+                  Icons.help,
                   color: Colors.black,
                   size: size.height / 24,
                 ),
                 title: Text(
-                  'Contact Us',
+                  'Help',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontFamily: Bold,
+                      fontSize: size.height / 48),
+                ),
+              ),
+              ListTile(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminHistoryPage())),
+                leading: Icon(
+                  Icons.history,
+                  color: Colors.black,
+                  size: size.height / 24,
+                ),
+                title: Text(
+                  'History',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: Bold,
                       fontSize: size.height / 48),
                 ),
               ),
               ListTile(
                 onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  const AdminAlertWindow(i: 1, alertHead: "Confirm Logout", alertText: "Are you sure you want to Logout?"))),
+                    MaterialPageRoute(builder: (context) =>  UserHomepage())),
                 leading: Icon(
                   Icons.logout,
                   color: Colors.black,
@@ -118,6 +140,7 @@ class AdminHomePage extends StatelessWidget {
                   'Log out',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontFamily: Bold,
                       fontSize: size.height / 48),
                 ),
               ),
@@ -139,7 +162,7 @@ class AdminHomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  const AdminAlertWindow(i: 1, alertHead: "Confirm Logout", alertText: "Are you sure you want to Logout?")));
+                    MaterialPageRoute(builder: (context) =>  UserHomepage()));
               },
             ),
           ],
@@ -149,25 +172,29 @@ class AdminHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(18.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [Text('Menu',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+              children:  [Text('Menu',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
 
                 SizedBox(height: 18,),
 
                 //Time table button
-                CustomButtonInHome(navigationInButton: DemoPage(), iconInButton: Icons.view_list_rounded, textInButton: 'aaaaa'),
+                CustomButtonInHome(navigationInButton: AdminProfilePage(userData: {},), iconInButton: Icons.man_rounded, textInButton: 'Admin Profile'),
                 SizedBox(height: 18,),
 
                 //Faculties Button
-                CustomButtonInHome(navigationInButton: DemoPage(), iconInButton: Icons.man_rounded, textInButton: 'bbb'),
+                CustomButtonInHome(navigationInButton: AdminManageRequestPage (), iconInButton: Icons.downloading, textInButton: 'Manage Request'),
                 SizedBox(height: 18,),
 
                 //Study Materials Button
-                CustomButtonInHome(navigationInButton: DemoPage(), iconInButton: Icons.menu_book_rounded, textInButton: 'ccccc'),
+                CustomButtonInHome(navigationInButton: AdminManageUser(), iconInButton: Icons.person_search, textInButton: 'Manage User'),
+                SizedBox(height: 18,),
+
+                CustomButtonInHome(navigationInButton: AdminHistoryPage(), iconInButton: Icons.history, textInButton: 'History'),
                 SizedBox(height: 18,),
 
                 //Fees Button
-                CustomButtonInHome(navigationInButton: DemoPage(), iconInButton: Icons.payments_rounded, textInButton: 'ddddddd'),
+                CustomButtonInHome(navigationInButton: AdminMyAccountPage(), iconInButton: Icons.account_box_rounded, textInButton: 'Admin Account'),
                 SizedBox(height: 18,),
+
 
 
                 // //Q&A Button
@@ -187,9 +214,9 @@ class AdminHomePage extends StatelessWidget {
                 // SizedBox(height: 18,),
 
                 //My Account
-                CustomButtonInHome(navigationInButton:AdminAlertWindow(i: 0, alertHead: 'My Account', alertText: 'Contact at ` mspp.f2a@gmail.com ` for account related queries.\n if you phase any issue with your account, contact at +9874563210.\n\n You will have full control over your account in the future. \n\n\nThank you for using Edeft'),
-                    iconInButton: Icons.account_box_rounded, textInButton: 'My Account'),
-                SizedBox(height: 18,),
+                // CustomButtonInHome(navigationInButton:AdminAlertWindow(i: 0, alertHead: 'My Account', alertText: 'Contact at ` mspp.f2a@gmail.com ` for account related queries.\n if you phase any issue with your account, contact at +9874563210.\n\n You will have full control over your account in the future. \n\n\nThank you for using Edeft'),
+                //     iconInButton: Icons.account_box_rounded, textInButton: 'My Account'),
+                // SizedBox(height: 18,),
 
 
               ],
@@ -230,8 +257,8 @@ class CustomButtonInHome extends StatelessWidget {
             spacing: 15,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Icon(iconInButton,size: 80,),
-              Text(textInButton,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+              Icon(iconInButton,size: 70,),
+              Text(textInButton,style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold,fontFamily: Bold),)
             ],
           ),
         ),

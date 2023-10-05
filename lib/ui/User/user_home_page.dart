@@ -63,8 +63,12 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lifemate/ui/Admin/admin_login_page.dart';
 import 'package:lifemate/ui/User/user_contact_us_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_requests_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_want_blood_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_history_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_myaccount_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_profile_page.dart';
+import 'package:lifemate/ui/User/user_menu_pages/user_register_page.dart';
 import 'package:lifemate/user_reusable_widget/utils_for_image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,6 +88,9 @@ class _UserHomepageState extends State<UserHomepage> {
 
 
 
+  String name = ''; // Add these variables
+  String bloodGroup = '';
+  String phoneNumber = '';
   // Uint8List? _image;
   bool _isLoading = true;
   final auth = FirebaseAuth.instance;
@@ -100,7 +107,32 @@ class _UserHomepageState extends State<UserHomepage> {
     DemoPage();
     // getFacultyDetails();
     //getStudyMaterials();
+    setState(() {
+      _loadUserData();
+    });
+
     _loadData();
+  }
+
+  Future<void> _loadUserData() async {
+    try {
+      final snapshot = await FirebaseFirestore.instance
+          .collection('userProfile')
+          .orderBy('lastUpdatedTime', descending: true)
+          .limit(1)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        final userData = snapshot.docs.first.data() as Map<String, dynamic>;
+        setState(() {
+          name = userData['name'] ?? '';
+          bloodGroup = userData['bloodGroup'] ?? '';
+          phoneNumber = userData['phoneNumber'] ?? '';
+        });
+      }
+    } catch (e) {
+      print('Error loading user data: $e');
+    }
   }
 
   Future<void> _loadData() async {
@@ -173,14 +205,14 @@ class _UserHomepageState extends State<UserHomepage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AdminLoginPage())),
+                              builder: (context) =>  UserMyAccountPage())),
                       leading: Icon(
-                        Icons.admin_panel_settings,
+                        Icons.account_box_rounded,
                         color: Colors.black,
                         size: size.height / 24,
                       ),
                       title: Text(
-                        'Admin Panel',
+                        'My Account',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontFamily: Bold,
@@ -191,7 +223,25 @@ class _UserHomepageState extends State<UserHomepage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const UserContactUsPage())),
+                              builder: (context) =>  UserHistoryPage())),
+                      leading: Icon(
+                        Icons.history,
+                        color: Colors.black,
+                        size: size.height / 24,
+                      ),
+                      title: Text(
+                        'Check History',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: Bold,
+                            fontSize: size.height / 48),
+                      ),
+                    ),
+                    ListTile(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserContactUsPage())),
                       leading: Icon(
                         Icons.call,
                         color: Colors.black,
@@ -199,6 +249,24 @@ class _UserHomepageState extends State<UserHomepage> {
                       ),
                       title: Text(
                         'Contact Us',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: Bold,
+                            fontSize: size.height / 48),
+                      ),
+                    ),
+                    ListTile(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdminLoginPage())),
+                      leading: Icon(
+                        Icons.admin_panel_settings,
+                        color: Colors.black,
+                        size: size.height / 24,
+                      ),
+                      title: Text(
+                        'Admin Panel',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontFamily: Bold,
@@ -324,10 +392,10 @@ class _UserHomepageState extends State<UserHomepage> {
                                 children: [
                                   SizedBox(
                                     width: size.width / 1.2,
-                                    height: size.height / 20,
+                                    height: size.height / 24,
                                   ),
                                   Text(
-                                    " kmkmkm",
+                                    " $name",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: Bold,
@@ -338,19 +406,20 @@ class _UserHomepageState extends State<UserHomepage> {
                                     height: size.height / 200,
                                   ),
                                   Text(
-                                    "B+ve",
+                                    "$bloodGroup",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontFamily: Medium,
+                                      fontFamily: Light,
                                     ),
                                   ),
                                   SizedBox(
                                     height: size.height / 200,
                                   ),
                                   Text(
-                                    "",
+                                    "$phoneNumber",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: Light
                                     ),
                                   ),
                                 ],
@@ -360,9 +429,9 @@ class _UserHomepageState extends State<UserHomepage> {
                         ),
 
                         Positioned(
-                          top: size.height / 8,
+                          top: size.height / 10.5,
                           child: CircleAvatar(
-                            radius: size.height / 18.5,
+                            radius: size.height / 17,
                             backgroundColor: Colors.grey,
                             backgroundImage: NetworkImage(
                                 "https://www.pngkey.com/png/full/202-2024792_user-profile-icon-png-download-fa-user-circle.png"),
@@ -410,11 +479,11 @@ class _UserHomepageState extends State<UserHomepage> {
                                   iconInButton: Icons.man_rounded,
                                   textInButton: "Profile"),
                               ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                                  navigationInButton: UserRegisterPage(),
                                   iconInButton: Icons.fact_check_rounded,
                                   textInButton: "Register"),
                               ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                                  navigationInButton: UserHistoryPage(),
                                   iconInButton: Icons.history,
                                   textInButton: "History"),
                             ],
@@ -431,13 +500,13 @@ class _UserHomepageState extends State<UserHomepage> {
                                   iconInButton: Icons.account_box_rounded,
                                   textInButton: "My Account"),
                               ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                                  navigationInButton: UserRequestPage(),
                                   iconInButton: Icons.downloading,
                                   textInButton: "Requests "),
                               ButtonInMenu(
-                                  navigationInButton: DemoPage(),
+                                  navigationInButton: UserWantBloodPage(),
                                   iconInButton: Icons.bloodtype_sharp,
-                                  textInButton: " Blood Bank "),
+                                  textInButton: " Want Blood "),
                             ],
                           ),
                         ],

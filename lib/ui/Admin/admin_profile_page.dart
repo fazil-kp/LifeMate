@@ -3,16 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({Key? key, required this.userData}) : super(key: key);
+class AdminProfilePage extends StatefulWidget {
+  const AdminProfilePage({Key? key, required this.userData}) : super(key: key);
 
   final Map<String, dynamic> userData;
 
   @override
-  State<UserProfilePage> createState() => _UserProfilePageState();
+  State<AdminProfilePage> createState() => _AdminProfilePageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> {
+class _AdminProfilePageState extends State<AdminProfilePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late String name;
   late String phoneNumber;
@@ -45,19 +45,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => UserHomepage(),
-              ),
-            );
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
         title: const Text(
           'My Profile',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
@@ -396,7 +383,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
   void saveProfileToFirebase() async {
     final currentTime = DateTime.now();
-    final userDataRef = FirebaseFirestore.instance.collection('userProfile');
+    final userDataRef = FirebaseFirestore.instance.collection('adminProfile');
     final newDocRef = await userDataRef.add({
       'name': name,
       'phoneNumber': phoneNumber,
@@ -408,16 +395,16 @@ class _UserProfilePageState extends State<UserProfilePage> {
     });
 
     setState(() {
-      updateStatus = 'Profile saved successfully!';
+      updateStatus = 'Admin Profile saved successfully!';
       lastUpdatedTime = currentTime;
     });
 
-    showSnackBar('Profile saved successfully!');
+    showSnackBar('Admin Profile saved successfully!');
   }
 
   void updateProfileInFirebase() async {
     final currentTime = DateTime.now();
-    final userDataRef = FirebaseFirestore.instance.collection('userProfile');
+    final userDataRef = FirebaseFirestore.instance.collection('adminProfile');
     await userDataRef.doc(widget.userData['documentId']).update({
       'name': name,
       'phoneNumber': phoneNumber,
@@ -429,11 +416,11 @@ class _UserProfilePageState extends State<UserProfilePage> {
     });
 
     setState(() {
-      updateStatus = 'Profile updated successfully!';
+      updateStatus = 'Admin Profile updated successfully!';
       lastUpdatedTime = currentTime;
     });
 
-    showSnackBar('Profile updated successfully!');
+    showSnackBar('Admin Profile updated successfully!');
   }
 
   void showSnackBar(String message) {

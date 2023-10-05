@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 
 Image logoWidget(String imageName) {
   return Image.asset(
@@ -59,6 +60,7 @@ Container firebaseButton(BuildContext context, title, Function onTap) {
       child: Text(
         title,
         style: TextStyle(
+          fontFamily: Bold,
           color: Colors.black87,
           fontWeight: FontWeight.bold,
           fontSize: 16.0,
