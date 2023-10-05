@@ -64,7 +64,8 @@ class UserList extends StatelessWidget {
             final usersInGroup = groupedUsers[bloodGroup]!;
 
             // Display the blood group and the users in this group
-            return Card( // Use Card for each blood group section
+            return Card(
+              // Use Card for each blood group section
               margin: EdgeInsets.all(10.0),
               elevation: 5.0,
               child: Column(
@@ -92,8 +93,10 @@ class UserList extends StatelessWidget {
                       final phoneNumber = userData['phoneNumber'] ?? '';
 
                       return ListTile(
-                        leading: CircleAvatar( // Add a circular avatar
-                          backgroundColor: Colors.red, // Customize avatar background color
+                        leading: CircleAvatar(
+                          // Add a circular avatar
+                          backgroundColor: Colors.red,
+                          // Customize avatar background color
                           child: Text(
                             bloodGroup,
                             style: TextStyle(

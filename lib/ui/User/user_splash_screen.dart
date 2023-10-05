@@ -50,7 +50,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 100,),
+            SizedBox(
+              height: 100,
+            ),
             Image(
               image: AssetImage("assets/images/donateBlood.png"),
               width: 300,

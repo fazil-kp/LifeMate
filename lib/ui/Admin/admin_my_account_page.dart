@@ -10,7 +10,8 @@ class AdminMyAccountPage extends StatefulWidget {
 
 class _AdminMyAccountPageState extends State<AdminMyAccountPage> {
   Future<DocumentSnapshot<Map<String, dynamic>>> _getUserData() async {
-    final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
+    final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
         .collection('adminProfile')
         .orderBy('lastUpdatedTime', descending: true)
         .limit(1)
@@ -45,7 +46,8 @@ class _AdminMyAccountPageState extends State<AdminMyAccountPage> {
       ),
       body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         future: _getUserData(),
-        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
+        builder: (BuildContext context,
+            AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
@@ -70,7 +72,7 @@ class _AdminMyAccountPageState extends State<AdminMyAccountPage> {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              height: MediaQuery.of(context).size.height/2,
+              height: MediaQuery.of(context).size.height / 2,
               decoration: BoxDecoration(
                 color: Colors.red[100],
                 borderRadius: BorderRadius.circular(10.0),
@@ -79,30 +81,70 @@ class _AdminMyAccountPageState extends State<AdminMyAccountPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    title: Text('Name',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold),),
-                    subtitle: Text(userData['name'] ?? 'N/A',style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold)),
+                    title: Text(
+                      'Name',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          fontFamily: Bold),
+                    ),
+                    subtitle: Text(userData['name'] ?? 'N/A',
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold)),
                   ),
                   ListTile(
-                    title: Text('Phone Number',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold)),
-                    subtitle: Text(userData['phoneNumber'] ?? 'N/A',style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold)),
+                    title: Text('Phone Number',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            fontFamily: Bold)),
+                    subtitle: Text(userData['phoneNumber'] ?? 'N/A',
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold)),
                   ),
                   ListTile(
-                    title: Text('Date of Birth',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold)),
-                    subtitle: Text(formattedDateOfBirth,style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold)),
+                    title: Text('Date of Birth',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            fontFamily: Bold)),
+                    subtitle: Text(formattedDateOfBirth,
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold)),
                   ),
                   ListTile(
-                    title: Text('Blood Group',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold)),
-                    subtitle: Text(userData['bloodGroup'] ?? 'N/A',style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold)),
+                    title: Text('Blood Group',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            fontFamily: Bold)),
+                    subtitle: Text(userData['bloodGroup'] ?? 'N/A',
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold)),
                   ),
                   ListTile(
-                    title: Text('Address',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold)),
-                    subtitle: Text(userData['address'] ?? 'N/A',style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold)),
+                    title: Text('Address',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            fontFamily: Bold)),
+                    subtitle: Text(userData['address'] ?? 'N/A',
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold)),
                   ),
                   Container(
                     decoration: BoxDecoration(),
                     child: ListTile(
-                      title: Text('Gender',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontFamily: Bold)),
-                      subtitle: Text(userData['gender'] ?? 'N/A',style: TextStyle(fontFamily: Medium,fontWeight: FontWeight.bold),),
+                      title: Text('Gender',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              fontFamily: Bold)),
+                      subtitle: Text(
+                        userData['gender'] ?? 'N/A',
+                        style: TextStyle(
+                            fontFamily: Medium, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],

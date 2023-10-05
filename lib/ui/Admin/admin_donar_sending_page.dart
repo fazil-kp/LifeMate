@@ -95,7 +95,9 @@ class _AdminDonarSendingPageState extends State<AdminDonarSendingPage> {
                   },
                 ),
               ),
-              SizedBox(height: 14,),
+              SizedBox(
+                height: 14,
+              ),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.red[100],
@@ -123,7 +125,9 @@ class _AdminDonarSendingPageState extends State<AdminDonarSendingPage> {
                   },
                 ),
               ),
-              SizedBox(height: 14,),
+              SizedBox(
+                height: 14,
+              ),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.red[100],
@@ -143,12 +147,19 @@ class _AdminDonarSendingPageState extends State<AdminDonarSendingPage> {
                   },
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               ElevatedButton(
                 onPressed: _sendData,
-                child: Text('Send',style: TextStyle(fontFamily: Bold,fontWeight: FontWeight.bold,fontSize: 18),),
+                child: Text(
+                  'Send',
+                  style: TextStyle(
+                      fontFamily: Bold,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
                 style: ElevatedButton.styleFrom(
-
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 ),
               ),

@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
-import 'package:lifemate/ui/User/user_menu_pages/demo_page.dart';
 import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 
 import '../../user_reusable_widget/admin_alert_window.dart';
@@ -13,7 +11,6 @@ import 'admin_manage_request_page.dart';
 import 'admin_manage_user_page.dart';
 import 'admin_my_account_page.dart';
 import 'admin_profile_page.dart';
-
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({Key? key}) : super(key: key);
@@ -32,8 +29,7 @@ class AdminHomePage extends StatelessWidget {
         drawer: Drawer(
           width: size.width / 1.5,
           shape: const RoundedRectangleBorder(
-              borderRadius:
-              BorderRadius.only(topRight: Radius.circular(50))),
+              borderRadius: BorderRadius.only(topRight: Radius.circular(50))),
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -53,18 +49,17 @@ class AdminHomePage extends StatelessWidget {
                     ),
                     child: Text(
                       'LifeMate',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ),
                 ),
-
               ),
               ListTile(
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                        const AdminHomePage())),
+                        builder: (context) => const AdminHomePage())),
                 leading: Icon(
                   Icons.home,
                   color: Colors.black,
@@ -79,7 +74,10 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminMyAccountPage())),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AdminMyAccountPage())),
                 leading: Icon(
                   Icons.account_box_rounded,
                   color: Colors.black,
@@ -97,8 +95,7 @@ class AdminHomePage extends StatelessWidget {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                        AdminContactUsPage())),
+                        builder: (context) => AdminContactUsPage())),
                 leading: Icon(
                   Icons.help,
                   color: Colors.black,
@@ -113,7 +110,10 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminHistoryPage())),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AdminHistoryPage())),
                 leading: Icon(
                   Icons.history,
                   color: Colors.black,
@@ -128,9 +128,8 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  UserHomepage())),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserHomepage())),
                 leading: Icon(
                   Icons.logout,
                   color: Colors.black,
@@ -147,11 +146,11 @@ class AdminHomePage extends StatelessWidget {
             ],
           ),
         ),
-        appBar:  AppBar(
+        appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.black),
           title: const Text(
             'LifeMate',
-            style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -160,9 +159,8 @@ class AdminHomePage extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.logout),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  UserHomepage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserHomepage()));
               },
             ),
           ],
@@ -172,53 +170,62 @@ class AdminHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(18.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:  [Text('Menu',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+              children: [
+                Text(
+                  'Menu',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
 
-                SizedBox(height: 18,),
+                SizedBox(
+                  height: 18,
+                ),
 
-                //Time table button
-                CustomButtonInHome(navigationInButton: AdminProfilePage(userData: {},), iconInButton: Icons.man_rounded, textInButton: 'Admin Profile'),
-                SizedBox(height: 18,),
+                //AdminProfile Button
+                CustomButtonInHome(
+                    navigationInButton: AdminProfilePage(
+                      userData: {},
+                    ),
+                    iconInButton: Icons.man_rounded,
+                    textInButton: 'Admin Profile'),
+                SizedBox(
+                  height: 18,
+                ),
 
-                //Faculties Button
-                CustomButtonInHome(navigationInButton: AdminManageRequestPage (), iconInButton: Icons.downloading, textInButton: 'Manage Request'),
-                SizedBox(height: 18,),
+                //AdminManageRequest Button
+                CustomButtonInHome(
+                    navigationInButton: AdminManageRequestPage(),
+                    iconInButton: Icons.downloading,
+                    textInButton: 'Manage Request'),
+                SizedBox(
+                  height: 18,
+                ),
 
-                //Study Materials Button
-                CustomButtonInHome(navigationInButton: AdminManageUser(), iconInButton: Icons.person_search, textInButton: 'Manage User'),
-                SizedBox(height: 18,),
+                //AdminManageUser Materials Button
+                CustomButtonInHome(
+                    navigationInButton: AdminManageUser(),
+                    iconInButton: Icons.person_search,
+                    textInButton: 'Manage User'),
+                SizedBox(
+                  height: 18,
+                ),
 
-                CustomButtonInHome(navigationInButton: AdminHistoryPage(), iconInButton: Icons.history, textInButton: 'History'),
-                SizedBox(height: 18,),
+                //AdminHistory Button
+                CustomButtonInHome(
+                    navigationInButton: AdminHistoryPage(),
+                    iconInButton: Icons.history,
+                    textInButton: 'History'),
+                SizedBox(
+                  height: 18,
+                ),
 
-                //Fees Button
-                CustomButtonInHome(navigationInButton: AdminMyAccountPage(), iconInButton: Icons.account_box_rounded, textInButton: 'Admin Account'),
-                SizedBox(height: 18,),
-
-
-
-                // //Q&A Button
-                // CustomButtonInHome(navigationInButton:  AlertWindow(i: 0, alertHead: "Coming Soon...!", alertText: "Stay Updated we are launching soon......."), iconInButton: Icons.question_answer_rounded, textInButton: "Q&A"),
-                // SizedBox(height: 18,),
-                //
-                // //Attendance button
-                // CustomButtonInHome(navigationInButton: AdminHomePage(), iconInButton: Icons.fact_check_rounded, textInButton: 'hhhh'),
-                // SizedBox(height: 18,),
-                //
-                // //Assessment Button
-                // CustomButtonInHome(navigationInButton: AdminHomePage(), iconInButton: Icons.assessment_rounded, textInButton: 'hhhh'),
-                // SizedBox(height: 18,),
-                //
-                // //Assignment Button
-                // CustomButtonInHome(navigationInButton: AdminHomePage(), iconInButton: Icons.assignment, textInButton: 'hhhh'),
-                // SizedBox(height: 18,),
-
-                //My Account
-                // CustomButtonInHome(navigationInButton:AdminAlertWindow(i: 0, alertHead: 'My Account', alertText: 'Contact at ` mspp.f2a@gmail.com ` for account related queries.\n if you phase any issue with your account, contact at +9874563210.\n\n You will have full control over your account in the future. \n\n\nThank you for using Edeft'),
-                //     iconInButton: Icons.account_box_rounded, textInButton: 'My Account'),
-                // SizedBox(height: 18,),
-
-
+                //AdminAccount Button
+                CustomButtonInHome(
+                    navigationInButton: AdminMyAccountPage(),
+                    iconInButton: Icons.account_box_rounded,
+                    textInButton: 'Admin Account'),
+                SizedBox(
+                  height: 18,
+                ),
               ],
             ),
           ),
@@ -230,7 +237,10 @@ class AdminHomePage extends StatelessWidget {
 
 class CustomButtonInHome extends StatelessWidget {
   const CustomButtonInHome({
-    super.key, required this.navigationInButton, required this.iconInButton, required this.textInButton,
+    super.key,
+    required this.navigationInButton,
+    required this.iconInButton,
+    required this.textInButton,
   });
 
   final Widget navigationInButton;
@@ -239,17 +249,16 @@ class CustomButtonInHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: (){
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => navigationInButton));
-    },
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => navigationInButton));
+      },
       style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white60,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-          )
-      ), child: Padding(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+      child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: SizedBox(
           width: double.infinity,
@@ -257,8 +266,17 @@ class CustomButtonInHome extends StatelessWidget {
             spacing: 15,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Icon(iconInButton,size: 70,),
-              Text(textInButton,style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold,fontFamily: Bold),)
+              Icon(
+                iconInButton,
+                size: 70,
+              ),
+              Text(
+                textInButton,
+                style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: Bold),
+              )
             ],
           ),
         ),

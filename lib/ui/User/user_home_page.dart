@@ -1,59 +1,3 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:lifemate/ui/User/user_login_page.dart';
-//
-// class UserHomepage extends StatefulWidget {
-//   const UserHomepage({super.key});
-//
-//   @override
-//   State<UserHomepage> createState() => _UserHomepageState();
-// }
-//
-// class _UserHomepageState extends State<UserHomepage> {
-//   final auth = FirebaseAuth.instance;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.transparent,
-//         elevation: 0,
-//         centerTitle: true,
-//         title: Text(
-//           "Home Page",
-//           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-//         ),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text(
-//               "This is User Home Page",
-//               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-//             ),
-//             SizedBox(
-//               height: 10,
-//             ),
-//             ElevatedButton(
-//               onPressed: () {
-//                 auth.signOut().then((value) {
-//                   Navigator.push(context,
-//                       MaterialPageRoute(builder: (context) => UserLoginPage()));
-//                 }).catchError((e) {
-//                   Fluttertoast.showToast(msg: e!.message);
-//                 });
-//               },
-//               child: Text("LOG OUT"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -75,7 +19,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../user_reusable_widget/user_alert_window.dart';
 import '../../firebase/user_model_database.dart';
 import '../../user_reusable_widget/constant_fonts.dart';
-import 'user_menu_pages/demo_page.dart';
 
 class UserHomepage extends StatefulWidget {
   const UserHomepage({Key? key}) : super(key: key);
@@ -85,18 +28,14 @@ class UserHomepage extends StatefulWidget {
 }
 
 class _UserHomepageState extends State<UserHomepage> {
-
-
-
   String name = ''; // Add these variables
   String bloodGroup = '';
   String phoneNumber = '';
+
   // Uint8List? _image;
   bool _isLoading = true;
   final auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
-  // UserModel loggedInUser =
-  //     UserModel(uid: '', userName: '', email: '', password: '');
 
   String imageUrl = '';
   final storage = FirebaseStorage.instance;
@@ -104,9 +43,6 @@ class _UserHomepageState extends State<UserHomepage> {
   @override
   void initState() {
     super.initState();
-    DemoPage();
-    // getFacultyDetails();
-    //getStudyMaterials();
     setState(() {
       _loadUserData();
     });
@@ -153,7 +89,7 @@ class _UserHomepageState extends State<UserHomepage> {
         return true;
       },
       child: _isLoading
-          ? Container(color: Colors.white, child:  Center())
+          ? Container(color: Colors.white, child: Center())
           : Scaffold(
               drawer: Drawer(
                 width: size.width / 1.5,
@@ -180,11 +116,13 @@ class _UserHomepageState extends State<UserHomepage> {
                           ),
                           child: Text(
                             'LifeMate',
-                            style: TextStyle(fontWeight: FontWeight.bold,fontFamily: Bold, fontSize: 20),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: Bold,
+                                fontSize: 20),
                           ),
                         ),
                       ),
-
                     ),
                     ListTile(
                       onTap: () => Navigator.pop(context),
@@ -205,7 +143,7 @@ class _UserHomepageState extends State<UserHomepage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  UserMyAccountPage())),
+                              builder: (context) => UserMyAccountPage())),
                       leading: Icon(
                         Icons.account_box_rounded,
                         color: Colors.black,
@@ -223,7 +161,7 @@ class _UserHomepageState extends State<UserHomepage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  UserHistoryPage())),
+                              builder: (context) => UserHistoryPage())),
                       leading: Icon(
                         Icons.history,
                         color: Colors.black,
@@ -418,9 +356,8 @@ class _UserHomepageState extends State<UserHomepage> {
                                   Text(
                                     "$phoneNumber",
                                     style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: Light
-                                    ),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: Light),
                                   ),
                                 ],
                               ),
@@ -438,18 +375,6 @@ class _UserHomepageState extends State<UserHomepage> {
                             // child: const CircularProgressIndicator(),
                           ),
                         ),
-                        // Positioned(
-                        //   left: size.width*0.5,
-                        //   top: size.width*.428,
-                        //   child: IconButton(
-                        //     color: Colors.red,
-                        //     onPressed: () {},
-                        //     icon: Icon(Icons.add_a_photo),
-                        //   ),
-                        //   bottom: 140,
-                        //   // left: 80,
-                        //   right: 135,
-                        // ),
                         //Menu Text
                         Positioned(
                           top: size.height / 2.75,
@@ -474,8 +399,10 @@ class _UserHomepageState extends State<UserHomepage> {
                           Wrap(
                             alignment: WrapAlignment.center,
                             children: [
-                               ButtonInMenu(
-                                  navigationInButton: UserProfilePage(userData: {},),
+                              ButtonInMenu(
+                                  navigationInButton: UserProfilePage(
+                                    userData: {},
+                                  ),
                                   iconInButton: Icons.man_rounded,
                                   textInButton: "Profile"),
                               ButtonInMenu(
@@ -494,7 +421,7 @@ class _UserHomepageState extends State<UserHomepage> {
                           //Second Row
                           Wrap(
                             alignment: WrapAlignment.center,
-                            children:  [
+                            children: [
                               ButtonInMenu(
                                   navigationInButton: UserMyAccountPage(),
                                   iconInButton: Icons.account_box_rounded,

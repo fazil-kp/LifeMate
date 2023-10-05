@@ -82,7 +82,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 SizedBox(
                   height: 20,
                 ),
-                firebaseButton(context, "LOG IN", () => _signIn(context),),
+                firebaseButton(
+                  context,
+                  "LOG IN",
+                  () => _signIn(context),
+                ),
                 // ElevatedButton(
                 //   onPressed: () => _signIn(context),
                 //   child: Text("SIGN IN"),
@@ -96,17 +100,17 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   }
 
   Widget _reusableTextField(
-      String labelText,
-      IconData iconData,
-      bool obscureText,
-      TextEditingController controller,
-      ) {
+    String labelText,
+    IconData iconData,
+    bool obscureText,
+    TextEditingController controller,
+  ) {
     return TextField(
       style: TextStyle(
         color: Colors.white.withOpacity(0.9),
       ),
       decoration: InputDecoration(
-        labelText:labelText,
+        labelText: labelText,
         labelStyle: TextStyle(
           fontFamily: Medium,
           color: Colors.white.withOpacity(0.9),

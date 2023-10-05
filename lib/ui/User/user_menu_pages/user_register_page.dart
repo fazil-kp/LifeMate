@@ -75,7 +75,12 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.accessibility_new),
-                        border: InputBorder.none, labelText: 'Patient Name',labelStyle: TextStyle(fontFamily: Medium,color: Colors.black,fontSize: 16)),
+                        border: InputBorder.none,
+                        labelText: 'Patient Name',
+                        labelStyle: TextStyle(
+                            fontFamily: Medium,
+                            color: Colors.black,
+                            fontSize: 16)),
                     onChanged: (value) {
                       setState(() {
                         patientName = value;
@@ -100,8 +105,13 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                   ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                        border: InputBorder.none, labelText: 'Bystander Name',labelStyle: TextStyle(fontFamily: Medium,color: Colors.black,fontSize: 16)),
+                        prefixIcon: Icon(Icons.person),
+                        border: InputBorder.none,
+                        labelText: 'Bystander Name',
+                        labelStyle: TextStyle(
+                            fontFamily: Medium,
+                            color: Colors.black,
+                            fontSize: 16)),
                     onChanged: (value) {
                       setState(() {
                         bystanderName = value;
@@ -140,7 +150,8 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     }).toList(),
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.person_search_outlined),
-                        border: InputBorder.none, labelText: 'Gender'),
+                        border: InputBorder.none,
+                        labelText: 'Gender'),
                     validator: (value) {
                       if (value == null) {
                         return 'Please select a gender';
@@ -160,7 +171,12 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.phone),
-                        border: InputBorder.none, labelText: 'Phone Number',labelStyle: TextStyle(fontFamily: Medium,color: Colors.black,fontSize: 16)),
+                        border: InputBorder.none,
+                        labelText: 'Phone Number',
+                        labelStyle: TextStyle(
+                            fontFamily: Medium,
+                            color: Colors.black,
+                            fontSize: 16)),
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(
@@ -214,7 +230,8 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                     }).toList(),
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.bloodtype_sharp),
-                        border: InputBorder.none, labelText: 'Blood Group'),
+                        border: InputBorder.none,
+                        labelText: 'Blood Group'),
                     validator: (value) {
                       if (value == null) {
                         return 'Please select a blood group';
@@ -234,7 +251,12 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.account_tree_sharp),
-                        border: InputBorder.none, labelText: 'Units Required',labelStyle: TextStyle(fontFamily: Medium,color: Colors.black,fontSize: 16)),
+                        border: InputBorder.none,
+                        labelText: 'Units Required',
+                        labelStyle: TextStyle(
+                            fontFamily: Medium,
+                            color: Colors.black,
+                            fontSize: 16)),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
@@ -261,7 +283,12 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.location_on),
-                        border: InputBorder.none, labelText: 'Location',labelStyle: TextStyle(fontFamily: Medium,color: Colors.black,fontSize: 16)),
+                        border: InputBorder.none,
+                        labelText: 'Location',
+                        labelStyle: TextStyle(
+                            fontFamily: Medium,
+                            color: Colors.black,
+                            fontSize: 16)),
                     onChanged: (value) {
                       setState(() {
                         location = value;
@@ -294,7 +321,10 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                       ),
                       Text(
                         formatDate(date),
-                        style: TextStyle(fontSize: 16,fontFamily: Bold,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: Bold,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

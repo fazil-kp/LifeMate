@@ -63,7 +63,7 @@ class _AdminManageRequestPageState extends State<AdminManageRequestPage> {
                 final data = documents[index].data() as Map<String, dynamic>;
                 final documentId = documents[index].id;
                 final date =
-                DateFormat('yyyy-MM-dd').format(data['date'].toDate());
+                    DateFormat('yyyy-MM-dd').format(data['date'].toDate());
 
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -99,19 +99,22 @@ class _AdminManageRequestPageState extends State<AdminManageRequestPage> {
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         title: Text('Confirm Deletion'),
-                                        content:
-                                        Text('Are you sure you want to delete this entry?'),
+                                        content: Text(
+                                            'Are you sure you want to delete this entry?'),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
-                                              Navigator.of(context).pop(); // Close the dialog
+                                              Navigator.of(context)
+                                                  .pop(); // Close the dialog
                                             },
                                             child: Text('Cancel'),
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              deleteDocument(documentId); // Delete the document
-                                              Navigator.of(context).pop(); // Close the dialog
+                                              deleteDocument(
+                                                  documentId); // Delete the document
+                                              Navigator.of(context)
+                                                  .pop(); // Close the dialog
                                             },
                                             child: Text('Delete'),
                                           ),
@@ -127,7 +130,9 @@ class _AdminManageRequestPageState extends State<AdminManageRequestPage> {
                                   // Navigate to another page when the Send icon is clicked
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => AdminDonarSendingPage()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AdminDonarSendingPage()),
                                   );
                                 },
                               ),

@@ -60,14 +60,15 @@ class _UserLoginPageState extends State<UserLoginPage> {
                     Icons.email_outlined,
                     false,
                     _emailTextController,
-
                   ),
                   SizedBox(
                     height: 30,
                   ),
-                  reusableTextField("Enter Password", Icons.lock_outline, true,
-                      _passwordTextController,
-
+                  reusableTextField(
+                    "Enter Password",
+                    Icons.lock_outline,
+                    true,
+                    _passwordTextController,
                   ),
                   SizedBox(
                     height: 5,
@@ -90,23 +91,6 @@ class _UserLoginPageState extends State<UserLoginPage> {
                     });
                   }),
                   signUpOption(),
-                  // SizedBox(
-                  //   height: MediaQuery.of(context).size.height * 0.01,
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.fromLTRB(
-                  //     100,
-                  //     0,
-                  //     100,
-                  //     0,
-                  //   ),
-                  //   child: firebaseButton(context, "Admin", () {
-                  //     Navigator.pushReplacement(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             builder: (context) => AdminLoginPage()));
-                  //   }),
-                  // ),
                 ],
               ),
             ),

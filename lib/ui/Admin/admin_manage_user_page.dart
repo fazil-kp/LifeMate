@@ -87,7 +87,8 @@ class _UserListState extends State<UserList> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: Text('Confirm Delete'),
-                          content: Text('Are you sure you want to delete this user?'),
+                          content: Text(
+                              'Are you sure you want to delete this user?'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
@@ -98,7 +99,10 @@ class _UserListState extends State<UserList> {
                             TextButton(
                               onPressed: () async {
                                 // Delete the user from Firestore
-                                await FirebaseFirestore.instance.collection('userProfile').doc(userId).delete();
+                                await FirebaseFirestore.instance
+                                    .collection('userProfile')
+                                    .doc(userId)
+                                    .delete();
                                 Navigator.of(context).pop(); // Close the dialog
                                 setState(() {}); // Update the UI
                               },

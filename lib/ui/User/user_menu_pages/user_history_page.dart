@@ -62,7 +62,8 @@ class _UserHistoryPageState extends State<UserHistoryPage> {
                 final documentId = documents[index].id;
 
                 // Format the date to show only the date (without time)
-                final date = DateFormat('yyyy-MM-dd').format(data['date'].toDate());
+                final date =
+                    DateFormat('yyyy-MM-dd').format(data['date'].toDate());
 
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -72,9 +73,22 @@ class _UserHistoryPageState extends State<UserHistoryPage> {
                     child: Column(
                       children: [
                         ListTile(
-                          title: Text('Patient Name: ${data['patientName']}',style: TextStyle(fontFamily: Bold),),
-                          subtitle: Text('Date: $date',style: TextStyle(fontFamily: Medium),), // Use the formatted date here
-                          leading: Text('${data['bloodGroup']}',style: TextStyle(fontFamily: Bold,fontSize: 15,color: Colors.red),),
+                          title: Text(
+                            'Patient Name: ${data['patientName']}',
+                            style: TextStyle(fontFamily: Bold),
+                          ),
+                          subtitle: Text(
+                            'Date: $date',
+                            style: TextStyle(fontFamily: Medium),
+                          ),
+                          // Use the formatted date here
+                          leading: Text(
+                            '${data['bloodGroup']}',
+                            style: TextStyle(
+                                fontFamily: Bold,
+                                fontSize: 15,
+                                color: Colors.red),
+                          ),
                           trailing: IconButton(
                             icon: Icon(Icons.delete),
                             onPressed: () {
@@ -84,18 +98,22 @@ class _UserHistoryPageState extends State<UserHistoryPage> {
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     title: Text('Confirm Deletion'),
-                                    content: Text('Are you sure you want to delete this entry?'),
+                                    content: Text(
+                                        'Are you sure you want to delete this entry?'),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
-                                          Navigator.of(context).pop(); // Close the dialog
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
                                         },
                                         child: Text('Cancel'),
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                          deleteDocument(documentId); // Delete the document
-                                          Navigator.of(context).pop(); // Close the dialog
+                                          deleteDocument(
+                                              documentId); // Delete the document
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
                                         },
                                         child: Text('Delete'),
                                       ),

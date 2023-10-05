@@ -5,7 +5,7 @@ import 'package:lifemate/ui/User/user_splash_screen.dart';
 
 import 'firebase/firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home:  UserSplashScreen(),
+      home: UserSplashScreen(),
     );
   }
 }

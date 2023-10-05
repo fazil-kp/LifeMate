@@ -93,8 +93,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 14,),
+                  SizedBox(
+                    height: 14,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.red[100],
@@ -119,7 +120,8 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                             return 'Phone number is required';
                           }
 
-                          final sanitizedValue = value.replaceAll(RegExp(r'[^0-9]'), '');
+                          final sanitizedValue =
+                              value.replaceAll(RegExp(r'[^0-9]'), '');
 
                           if (sanitizedValue.length != 10) {
                             return 'Invalid phone number. Please enter exactly 10 digits.';
@@ -135,8 +137,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 14,),
+                  SizedBox(
+                    height: 14,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.red[100],
@@ -162,7 +165,8 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                             firstDate: DateTime(1900),
                             lastDate: DateTime.now(),
                           );
-                          if (selectedDate != null && selectedDate != dateOfBirth) {
+                          if (selectedDate != null &&
+                              selectedDate != dateOfBirth) {
                             setState(() {
                               dateOfBirth = selectedDate;
                             });
@@ -171,8 +175,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       },
                     ),
                   ),
-
-                  SizedBox(height: 14,),
+                  SizedBox(
+                    height: 14,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.red[100],
@@ -184,9 +189,13 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                         ignoring: !isEditMode,
                         child: Row(
                           children: [
-                            SizedBox(width: 9,),
+                            SizedBox(
+                              width: 9,
+                            ),
                             Icon(Icons.bloodtype_sharp),
-                            SizedBox(width: 16,),
+                            SizedBox(
+                              width: 16,
+                            ),
                             Expanded(
                               child: DropdownButtonFormField<String>(
                                 decoration: InputDecoration(
@@ -234,8 +243,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 14,),
+                  SizedBox(
+                    height: 14,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.red[100],
@@ -268,8 +278,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 14,),
+                  SizedBox(
+                    height: 14,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.red[100],
@@ -279,7 +290,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: <Widget>[
-                          SizedBox(width: 17,),
+                          SizedBox(
+                            width: 17,
+                          ),
                           Text(
                             'Gender:',
                             style: TextStyle(
@@ -300,7 +313,10 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                             },
                             toggleable: isEditMode,
                           ),
-                          Text('Male',style: TextStyle(fontFamily: Bold),),
+                          Text(
+                            'Male',
+                            style: TextStyle(fontFamily: Bold),
+                          ),
                           Radio<String>(
                             value: 'Female',
                             groupValue: gender,
@@ -313,13 +329,17 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                             },
                             toggleable: isEditMode,
                           ),
-                          Text('Female',style: TextStyle(fontFamily: Bold),),
+                          Text(
+                            'Female',
+                            style: TextStyle(fontFamily: Bold),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 30,),
-
+                  SizedBox(
+                    height: 30,
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       if (isEditMode) {
@@ -348,7 +368,6 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     },
                     child: Text(isEditMode ? 'Save Profile' : 'Edit Profile'),
                   ),
-
                   if (updateStatus != null && lastUpdatedTime != null)
                     Padding(
                       padding: const EdgeInsets.all(16.0),

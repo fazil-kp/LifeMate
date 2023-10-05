@@ -23,6 +23,7 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
   final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   String? errorMessage;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +65,11 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
                   SizedBox(
                     height: 130,
                   ),
-                  reusableTextField("Enter UserName", Icons.person_outline, false,
-                      _userNameTextController,
+                  reusableTextField(
+                    "Enter UserName",
+                    Icons.person_outline,
+                    false,
+                    _userNameTextController,
                   ),
                   SizedBox(
                     height: 30,
@@ -81,7 +85,8 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
                     height: 20,
                   ),
                   firebaseButton(context, "SIGN IN", () {
-                    signUp(_emailTextController.text, _passwordTextController.text);
+                    signUp(_emailTextController.text,
+                        _passwordTextController.text);
                     // FirebaseAuth.instance
                     //     .createUserWithEmailAndPassword(
                     //         email: _emailTextController.text,
@@ -145,6 +150,7 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
       }
     }
   }
+
   postDetailsToFirestore() async {
     // calling our firestore
     // calling our user model
@@ -153,14 +159,14 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
 
-    UserModel userModel = UserModel(uid: '', userName: '', email: '', password: '');
+    UserModel userModel =
+        UserModel(uid: '', userName: '', email: '', password: '');
 
     // writing all the values
     userModel.email = user!.email;
     userModel.uid = user.uid;
     userModel.userName = _userNameTextController.text;
     userModel.password = _passwordTextController.text;
-
 
     await firebaseFirestore
         .collection("users")
@@ -171,10 +177,8 @@ class _UserSignUpPageState extends State<UserSignUpPage> {
     Navigator.pushAndRemoveUntil(
         (context),
         MaterialPageRoute(builder: (context) => UserHomepage()),
-            (route) => false);
+        (route) => false);
   }
-
-
 
   Row signUpOption() {
     return Row(

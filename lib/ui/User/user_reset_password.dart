@@ -52,8 +52,11 @@ class _ResetPasswordState extends State<ResetPassword> {
             ),
             child: Column(
               children: <Widget>[
-                reusableTextField("Enter email", Icons.email_outlined, false,
-                    _emailTextController,
+                reusableTextField(
+                  "Enter email",
+                  Icons.email_outlined,
+                  false,
+                  _emailTextController,
                 ),
                 SizedBox(
                   height: 20,
@@ -62,7 +65,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   FirebaseAuth.instance
                       .sendPasswordResetEmail(email: _emailTextController.text)
                       .then((value) {
-                        Fluttertoast.showToast(msg: "Check email");
+                    Fluttertoast.showToast(msg: "Check email");
                     Navigator.push(
                         context,
                         MaterialPageRoute(

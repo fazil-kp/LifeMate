@@ -10,7 +10,10 @@ class AdminHistoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'History',
-          style: TextStyle(fontFamily: Bold,fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+              fontFamily: Bold,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFFfafafa),
@@ -28,7 +31,9 @@ class AdminDonarList extends StatelessWidget {
       stream: FirebaseFirestore.instance.collection('adminDonar').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator()); // Loading indicator while data is being fetched
+          return Center(
+              child:
+                  CircularProgressIndicator()); // Loading indicator while data is being fetched
         }
         var donarDocs = snapshot.data!.docs;
 
@@ -71,7 +76,8 @@ class AdminDonarList extends StatelessWidget {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: Text('Confirm Delete'),
-                          content: Text('Are you sure you want to delete this donor?'),
+                          content: Text(
+                              'Are you sure you want to delete this donor?'),
                           actions: [
                             TextButton(
                               child: Text('Cancel'),

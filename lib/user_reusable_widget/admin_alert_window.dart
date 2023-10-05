@@ -2,16 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
-import 'package:lifemate/ui/User/user_menu_pages/demo_page.dart';
 import 'package:lifemate/ui/User/user_login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminAlertWindow extends StatefulWidget {
   const AdminAlertWindow(
       {Key? key,
-        required this.i,
-        required this.alertHead,
-        required this.alertText})
+      required this.i,
+      required this.alertHead,
+      required this.alertText})
       : super(key: key);
 
   final int i;
@@ -67,11 +66,11 @@ class _AdminAlertWindowState extends State<AdminAlertWindow> {
                 padding: const EdgeInsets.all(14),
                 child: widget.i == 0
                     ? const Text(
-                  "okay",
-                  style: TextStyle(color: Colors.white),
-                )
+                        "okay",
+                        style: TextStyle(color: Colors.white),
+                      )
                     : const Text("Log Out",
-                    style: TextStyle(color: Colors.white))),
+                        style: TextStyle(color: Colors.white))),
           ),
         ]);
   }
