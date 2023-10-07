@@ -49,7 +49,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => UserHomepage(),
+                builder: (context) => UserHomePage(),
               ),
             );
           },

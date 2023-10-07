@@ -20,14 +20,14 @@ import '../../user_reusable_widget/user_alert_window.dart';
 import '../../firebase/user_model_database.dart';
 import '../../user_reusable_widget/constant_fonts.dart';
 
-class UserHomepage extends StatefulWidget {
-  const UserHomepage({Key? key}) : super(key: key);
+class UserHomePage extends StatefulWidget {
+  const UserHomePage({Key? key}) : super(key: key);
 
   @override
-  State<UserHomepage> createState() => _UserHomepageState();
+  State<UserHomePage> createState() => _UserHomePageState();
 }
 
-class _UserHomepageState extends State<UserHomepage> {
+class _UserHomePageState extends State<UserHomePage> {
   String name = ''; // Add these variables
   String bloodGroup = '';
   String phoneNumber = '';
@@ -89,7 +89,7 @@ class _UserHomepageState extends State<UserHomepage> {
         return true;
       },
       child: _isLoading
-          ? Container(color: Colors.white, child: Center())
+          ? Container(color: Colors.white, child: Center(child: CircularProgressIndicator()))
           : Scaffold(
               drawer: Drawer(
                 width: size.width / 1.5,

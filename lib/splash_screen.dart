@@ -28,7 +28,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
       // User is logged in, navigate to the home screen.
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => UserHomepage(),
+          builder: (context) => UserHomePage(),
         ),
       );
     } else {

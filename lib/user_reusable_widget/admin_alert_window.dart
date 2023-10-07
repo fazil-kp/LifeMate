@@ -57,7 +57,7 @@ class _AdminAlertWindowState extends State<AdminAlertWindow> {
           TextButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => UserHomepage()));
+                  MaterialPageRoute(builder: (context) => UserHomePage()));
             },
             child: Container(
                 decoration: BoxDecoration(

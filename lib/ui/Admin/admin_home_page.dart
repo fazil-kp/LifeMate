@@ -129,7 +129,7 @@ class AdminHomePage extends StatelessWidget {
               ),
               ListTile(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserHomepage())),
+                    MaterialPageRoute(builder: (context) => UserHomePage())),
                 leading: Icon(
                   Icons.logout,
                   color: Colors.black,
@@ -160,7 +160,7 @@ class AdminHomePage extends StatelessWidget {
               icon: const Icon(Icons.logout),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserHomepage()));
+                    MaterialPageRoute(builder: (context) => UserHomePage()));
               },
             ),
           ],
