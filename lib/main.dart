@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lifemate/ui/User/user_login_page.dart';
-import 'package:lifemate/ui/User/user_splash_screen.dart';
+import 'package:lifemate/splash_screen.dart';
 
 import 'firebase/firebase_options.dart';
 
