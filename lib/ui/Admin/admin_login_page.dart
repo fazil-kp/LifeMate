@@ -66,7 +66,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 _reusableTextField(
                   "Enter Panel Code",
-                  Icons.email_outlined,
+                  Icons.vpn_key, // Key icon for panel code
                   false,
                   _userNameTextController,
                 ),
@@ -75,7 +75,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 _reusableTextField(
                   "Enter Password",
-                  Icons.lock_outline,
+                  Icons.lock, // Lock icon for password
                   true,
                   _passwordTextController,
                 ),
@@ -85,12 +85,8 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 firebaseButton(
                   context,
                   "LOG IN",
-                  () => _signIn(context),
+                      () => _signIn(context),
                 ),
-                // ElevatedButton(
-                //   onPressed: () => _signIn(context),
-                //   child: Text("SIGN IN"),
-                // ),
               ],
             ),
           ),
@@ -100,11 +96,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   }
 
   Widget _reusableTextField(
-    String labelText,
-    IconData iconData,
-    bool obscureText,
-    TextEditingController controller,
-  ) {
+      String labelText,
+      IconData prefixIconData,
+      bool obscureText,
+      TextEditingController controller,
+      ) {
     return TextField(
       style: TextStyle(
         color: Colors.white.withOpacity(0.9),
@@ -115,6 +111,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
           fontFamily: Medium,
           color: Colors.white.withOpacity(0.9),
         ),
+        prefixIcon: Icon(prefixIconData,color: Colors.white.withOpacity(0.8)), // Prefix icon
         filled: true,
         floatingLabelBehavior: FloatingLabelBehavior.never,
         fillColor: Colors.white.withOpacity(0.3),
