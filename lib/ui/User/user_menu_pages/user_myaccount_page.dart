@@ -72,82 +72,84 @@ class _UserMyAccountPageState extends State<UserMyAccountPage> {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 1.5,
               decoration: BoxDecoration(
                 color: Colors.red[100],
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListTile(
-                    title: Text(
-                      'Name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          fontFamily: Bold),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      title: Text(
+                        'Name',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            fontFamily: Bold),
+                      ),
+                      subtitle: Text(userData['name'] ?? 'N/A',
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold)),
                     ),
-                    subtitle: Text(userData['name'] ?? 'N/A',
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold)),
-                  ),
-                  ListTile(
-                    title: Text('Phone Number',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            fontFamily: Bold)),
-                    subtitle: Text(userData['phoneNumber'] ?? 'N/A',
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold)),
-                  ),
-                  ListTile(
-                    title: Text('Date of Birth',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            fontFamily: Bold)),
-                    subtitle: Text(formattedDateOfBirth,
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold)),
-                  ),
-                  ListTile(
-                    title: Text('Blood Group',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            fontFamily: Bold)),
-                    subtitle: Text(userData['bloodGroup'] ?? 'N/A',
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold)),
-                  ),
-                  ListTile(
-                    title: Text('Address',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            fontFamily: Bold)),
-                    subtitle: Text(userData['address'] ?? 'N/A',
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold)),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(),
-                    child: ListTile(
-                      title: Text('Gender',
+                    ListTile(
+                      title: Text('Phone Number',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
                               fontFamily: Bold)),
-                      subtitle: Text(
-                        userData['gender'] ?? 'N/A',
-                        style: TextStyle(
-                            fontFamily: Medium, fontWeight: FontWeight.bold),
+                      subtitle: Text(userData['phoneNumber'] ?? 'N/A',
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold)),
+                    ),
+                    ListTile(
+                      title: Text('Date of Birth',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              fontFamily: Bold)),
+                      subtitle: Text(formattedDateOfBirth,
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold)),
+                    ),
+                    ListTile(
+                      title: Text('Blood Group',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              fontFamily: Bold)),
+                      subtitle: Text(userData['bloodGroup'] ?? 'N/A',
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold)),
+                    ),
+                    ListTile(
+                      title: Text('Address',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              fontFamily: Bold)),
+                      subtitle: Text(userData['address'] ?? 'N/A',
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(),
+                      child: ListTile(
+                        title: Text('Gender',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                fontFamily: Bold)),
+                        subtitle: Text(
+                          userData['gender'] ?? 'N/A',
+                          style: TextStyle(
+                              fontFamily: Medium, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

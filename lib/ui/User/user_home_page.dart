@@ -262,7 +262,7 @@ class _UserHomePageState extends State<UserHomePage> {
                             height: size.height / 3.8,
                             width: size.width,
                             decoration: const BoxDecoration(
-                                color: Colors.redAccent,
+                                color: Colors.red,
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(30),
                                     bottomRight: Radius.circular(30))),
@@ -285,7 +285,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                   color: Colors.black),
                             ),
                             centerTitle: true,
-                            backgroundColor: Colors.redAccent,
+                            backgroundColor: Colors.red,
                             elevation: 0,
                           ),
                         ),
@@ -484,7 +484,7 @@ class ButtonInMenu extends StatelessWidget {
               Icon(
                 iconInButton,
                 size: 80,
-                color: Colors.redAccent,
+                color: Colors.red,
               ),
               Text(
                 textInButton,

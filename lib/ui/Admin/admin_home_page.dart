@@ -12,9 +12,14 @@ import 'admin_manage_user_page.dart';
 import 'admin_my_account_page.dart';
 import 'admin_profile_page.dart';
 
-class AdminHomePage extends StatelessWidget {
+class AdminHomePage extends StatefulWidget {
   const AdminHomePage({Key? key}) : super(key: key);
 
+  @override
+  State<AdminHomePage> createState() => _AdminHomePageState();
+}
+
+class _AdminHomePageState extends State<AdminHomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
