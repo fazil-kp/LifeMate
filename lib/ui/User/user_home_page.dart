@@ -51,6 +51,10 @@ class _UserHomePageState extends State<UserHomePage> {
   }
 
   Future<void> _loadUserData() async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userRole', 'user');
+
     try {
       final snapshot = await FirebaseFirestore.instance
           .collection('userProfile')
