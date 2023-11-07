@@ -117,7 +117,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        maxLength: 10,
                         decoration: InputDecoration(
+                          counterText: '',
                           border: InputBorder.none,
                           prefixIcon: Icon(Icons.phone),
                           labelText: 'Phone Number',
