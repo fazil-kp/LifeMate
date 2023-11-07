@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../user_reusable_widget/admin_alert_window.dart';
 import '../../user_reusable_widget/user_alert_window.dart';
@@ -20,6 +21,20 @@ class AdminHomePage extends StatefulWidget {
 }
 
 class _AdminHomePageState extends State<AdminHomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _setAdmin();
+    });
+  }
+
+  Future<void> _setAdmin() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userRole', 'admin');
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

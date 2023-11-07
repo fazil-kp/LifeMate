@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lifemate/ui/Admin/admin_home_page.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/ui/User/user_login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSplashScreen extends StatefulWidget {
   const UserSplashScreen({Key? key});
@@ -19,6 +21,10 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
   }
 
   void _navigateToNextScreen() async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userRole = prefs.getString('userRole');
+
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
 
@@ -26,11 +32,22 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
 
     if (user != null) {
       // User is logged in, navigate to the home screen.
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => UserHomePage(),
-        ),
-      );
+      if(userRole=='admin')
+      {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => AdminHomePage(),
+          ),
+        );
+      }
+      else if(userRole=='user')
+      {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => UserHomePage(),
+          ),
+        );
+      }
     } else {
       // User is not logged in, navigate to the login screen.
       Navigator.of(context).pushReplacement(
