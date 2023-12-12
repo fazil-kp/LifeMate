@@ -118,7 +118,7 @@ class _AdminDonarSendingPageState extends State<AdminDonarSendingPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a phone number';
-                    } else if (value!.length != 10) {
+                    } else if (value.length != 10) {
                       return 'Phone number must be 10 digits';
                     }
                     return null;

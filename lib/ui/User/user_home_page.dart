@@ -1,10 +1,10 @@
+// ignore_for_file: unnecessary_cast, deprecated_member_use
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lifemate/ui/Admin/admin_login_page.dart';
 import 'package:lifemate/ui/User/user_contact_us_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_requests_page.dart';
@@ -13,11 +13,8 @@ import 'package:lifemate/ui/User/user_menu_pages/user_history_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_myaccount_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_profile_page.dart';
 import 'package:lifemate/ui/User/user_menu_pages/user_register_page.dart';
-import 'package:lifemate/user_reusable_widget/utils_for_image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../user_reusable_widget/user_alert_window.dart';
-import '../../firebase/user_model_database.dart';
 import '../../user_reusable_widget/constant_fonts.dart';
 
 class UserHomePage extends StatefulWidget {

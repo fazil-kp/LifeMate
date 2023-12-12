@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
-import 'package:lifemate/ui/User/user_login_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class AdminAlertWindow extends StatefulWidget {
   const AdminAlertWindow(

@@ -1,11 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lifemate/ui/User/user_home_page.dart';
 import 'package:lifemate/user_reusable_widget/constant_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../user_reusable_widget/admin_alert_window.dart';
-import '../../user_reusable_widget/user_alert_window.dart';
 import 'admin_help_page.dart';
 import 'admin_history_page.dart';
 import 'admin_manage_request_page.dart';
